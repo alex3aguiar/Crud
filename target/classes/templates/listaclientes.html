@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ClientesP</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+			<form action="recriar" method="post">
+			<button type="submit" class="btn btn-success">recriar</button>
+		</form>
+		
+		
+		<form action="salvar" method="post">
+			<div class="form-group">
+				<label for="nome">Nome completo</label> <input type="text"
+					class="form-control" id="nome" name="nome" placeholder="Nome" />
+			</div>
+			<div class="form-group">
+				<label for="email">E-mail</label> <input type="email"
+					class="form-control" id="email" name="email" placeholder="Email" />
+			</div>
+			<div class="form-group">
+				<label for="telefone">Saldo</label> <input
+					type="text" class="form-control" id="saldo" name="saldo" placeholder="saldo" />
+			</div>
+			<button type="submit" class="btn btn-success">salvar</button>
+		</form>
+		
+		<form action="pesquisa" method="get">
+			<div class="form-group">
+				<label for="nome">Pesquisa</label> <input type="text"
+					class="form-control" id="filtro" name="filtro"
+					placeholder="pesquisa" />
+			</div>
+			<button type="submit" class="btn btn-success">Pesquisa</button>
+
+		</form>
+
+
+		<div id="listaDeClientes">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Saldo</th>
+					</tr>
+				</thead>
+				<tr th:each="cliente : ${clientes}">
+					<form action="deletar" method="post">
+						<div class="form-group">
+							<td><span th:text="${cliente.nome}"></span></td>
+							<td><span th:text="${cliente.email}"></span></td>
+							<td><span th:text="${cliente.saldo}"></span></td>
+							
+							<td> <input type="submit" value="deletar"></input></td>
+							<input type="hidden" name="filtro" th:value="${cliente.nome}" />
+
+							
+							
+						</div>
+					</form>
+				</tr>
+			</table>
+		</div>
+		<hr />
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

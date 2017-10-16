@@ -1,0 +1,5 @@
+br\com\alura\listavip\ApplicationStarter.class
+br\com\alura\listavip\repository\ClienteRepository.class
+br\com\alura\listavip\service\ClienteService.class
+br\com\alura\listavip\model\Cliente.class
+br\com\alura\listavip\ClienteController.class
